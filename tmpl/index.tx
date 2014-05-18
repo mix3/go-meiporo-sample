@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="TodoApp">
+	<head>
+		<meta charset="utf-8">
+		<title>Todo - go-traffic-sample</title>
+		<script src="https://code.angularjs.org/1.2.16/angular.min.js"></script>
+		<script src="/js/app.js"></script>
+		<link rel="stylesheet" href="/css/app.css" />
+	</head>
+	<body>
+		<h1>Todo - go-traffic-sample</h1>
+		<div ng-controller="TodoController">
+			<p>
+			Completed Todo: {{ getCompletedConut() }} / {{ todos.length }}
+			<button ng-click="deleteAllCompletedTodo()">Delete Completed Todo</button>
+			</p>
+			<ul>
+				<li ng-repeat="todo in todos">
+				<input type="checkbox" ng-model="todo.completed" ng-change="switchCompleted(todo.id)" />
+				<span class="completed-{{ todo.completed }}">{{ todo.title }}</span>
+				<a href="" ng-click="deleteCompletedTodo(todo.id)">[x]</a>
+				</li>
+			</ul>
+			<form ng-submit="create()">
+				<input type="text" ng-model="newTodoTitle" />
+				<input type="submit" value="create" />
+			</form>
+		</div>
+	</body>
+</html>
